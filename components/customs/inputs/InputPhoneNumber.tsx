@@ -23,7 +23,7 @@ interface Props extends TextInputProps {
   error?: string;
 }
 
-export const InputPrimary = ({
+export const InputPhoneNumber = ({
   label,
   placeholder,
   value,
@@ -36,6 +36,11 @@ export const InputPrimary = ({
 }: Props) => {
   const [focused, setFocused] = useState<boolean>(false);
 
+  const handleChange = (text: string) => {
+    const cleaned = text.replace(/[^0-9]/g, "");
+    onValueChange(cleaned);
+  };
+
   return (
     <View style={[styles.container, containerStyle]}>
       <TextInter style={[styles.label, labelStyle]}>{label}</TextInter>
@@ -43,11 +48,11 @@ export const InputPrimary = ({
       <TextInput
         style={[
           styles.input,
-          focused && styles["input-focus"],
-          error && styles["input-error"],
+          focused && styles.inputFocus,
+          error && styles.inputError,
         ]}
         placeholder={placeholder ? placeholder : undefined}
-        onChangeText={onValueChange}
+        onChangeText={handleChange}
         autoCorrect={false}
         autoCapitalize="none"
         value={value}
@@ -56,7 +61,7 @@ export const InputPrimary = ({
         {...rest}
       />
 
-      {error && <Text style={styles["text-error"]}>{error}</Text>}
+      {error && <Text style={styles.textError}>{error}</Text>}
     </View>
   );
 };
@@ -77,13 +82,13 @@ const styles = StyleSheet.create({
     padding: 10,
     textAlignVertical: "top",
   },
-  "input-focus": {
+  inputFocus: {
     borderColor: colors.primary,
   },
-  "input-error": {
+  inputError: {
     borderColor: "red",
   },
-  "text-error": {
+  textError: {
     color: "red",
     fontSize: 12,
   },
