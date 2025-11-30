@@ -1,4 +1,7 @@
+import { useAuthStore } from "@/hooks/stores/useAuthStore";
 import { colors } from "@/styles/colors";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useEffect } from "react";
 import {
   Pressable,
@@ -18,26 +21,37 @@ import { TextInter } from "../texts/TextInter";
 const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
 
 interface Props extends PressableProps {
-  onPress: (data?: any) => void;
-  title: string;
   buttonStyle?: StyleProp<ViewStyle>;
   textStyle?: StyleProp<TextStyle>;
   isLoading?: boolean;
 }
 
-export const ButtonPrimary = ({
-  onPress,
-  title,
+export const ButtonLogout = ({
   buttonStyle,
   textStyle,
   isLoading = false,
   ...rest
 }: Props) => {
+  const queryClient = useQueryClient();
+  const { signOut } = useAuthStore();
   const opacity = useSharedValue(1);
 
+  const logoutMutation = useMutation({
+    mutationFn: async () => {
+      await signOut();
+    },
+    onSuccess: () => {},
+    onError: () => {},
+    onSettled: () => {
+      queryClient.invalidateQueries();
+    },
+  });
+
   useEffect(() => {
-    opacity.value = withTiming(isLoading ? 0.5 : 1, { duration: 200 });
-  }, [isLoading]);
+    opacity.value = withTiming(logoutMutation.isPending ? 0.5 : 1, {
+      duration: 200,
+    });
+  }, [logoutMutation.isPending]);
 
   const animatedStyle = useAnimatedStyle(() => ({
     opacity: opacity.value,
@@ -45,13 +59,15 @@ export const ButtonPrimary = ({
 
   return (
     <AnimatedPressable
-      onPress={onPress}
+      onPress={isLoading ? () => {} : () => logoutMutation.mutate()}
       style={[styles.button, buttonStyle, animatedStyle]}
-      disabled={isLoading}
+      disabled={logoutMutation.isPending}
       {...rest}
     >
+      <MaterialCommunityIcons name="logout" size={24} color={colors.red400} />
+
       <TextInter style={[styles.text, textStyle]}>
-        {isLoading ? "Loading..." : title}
+        {isLoading ? "Loading..." : "Logout"}
       </TextInter>
     </AnimatedPressable>
   );
@@ -59,9 +75,7 @@ export const ButtonPrimary = ({
 
 const styles = StyleSheet.create({
   button: {
-    padding: 14,
     borderRadius: 8,
-    backgroundColor: colors.primary,
     flexDirection: "row",
     gap: 8,
     alignItems: "center",
@@ -69,7 +83,7 @@ const styles = StyleSheet.create({
   },
   text: {
     textAlign: "center",
-    color: "white",
+    color: colors.red400,
     fontWeight: 600,
     fontSize: 14,
   },

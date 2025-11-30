@@ -113,7 +113,7 @@ const styles = StyleSheet.create({
   textInput: {
     borderWidth: 1,
     height: 40,
-    borderColor: "#ACAFB5",
+    borderColor: colors.neutral400,
     borderRadius: 8,
     paddingHorizontal: 10,
     alignItems: "center",

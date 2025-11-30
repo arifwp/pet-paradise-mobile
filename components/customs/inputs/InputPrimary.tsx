@@ -72,7 +72,7 @@ const styles = StyleSheet.create({
   input: {
     height: 40,
     borderWidth: 1,
-    borderColor: "#ACAFB5",
+    borderColor: colors.neutral400,
     borderRadius: 8,
     padding: 10,
     textAlignVertical: "top",
