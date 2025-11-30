@@ -3,7 +3,7 @@ import { Icon, Label, NativeTabs } from "expo-router/unstable-native-tabs";
 
 export default function TabsLayout() {
   return (
-    <NativeTabs>
+    <NativeTabs disableTransparentOnScrollEdge backgroundColor={colors.white}>
       <NativeTabs.Trigger
         name="index"
         options={{
@@ -23,11 +23,11 @@ export default function TabsLayout() {
         </Label>
       </NativeTabs.Trigger>
 
-      <NativeTabs.Trigger name="community">
+      <NativeTabs.Trigger name="adopt">
         <Icon
           sf={{
-            default: "globe.asia.australia",
-            selected: "globe.asia.australia.fill",
+            default: "storefront",
+            selected: "storefront.fill",
           }}
           selectedColor={colors.primary}
         />
@@ -36,7 +36,7 @@ export default function TabsLayout() {
             color: colors.primary,
           }}
         >
-          Community
+          Adopt
         </Label>
         {/* <Badge>9+</Badge> */}
       </NativeTabs.Trigger>
