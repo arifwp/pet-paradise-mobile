@@ -2,15 +2,21 @@ import { ButtonBackNavigation } from "@/components/customs/buttons/ButtonBackNav
 import { SplashScreenController } from "@/components/customs/SplashScreenController";
 import { useAuthStore } from "@/hooks/stores/useAuthStore";
 import { colors } from "@/styles/colors";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Stack } from "expo-router";
+import ToastManager from "toastify-react-native";
 
 export default function Root() {
   // Set up the auth context and render your layout inside of it.
+  const queryClient = new QueryClient();
   return (
     <>
       {/* <StatusBar barStyle={"dark-content"} /> */}
-      <SplashScreenController />
-      <RootNavigator />
+      <QueryClientProvider client={queryClient}>
+        <SplashScreenController />
+        <RootNavigator />
+        <ToastManager />
+      </QueryClientProvider>
     </>
   );
 }
