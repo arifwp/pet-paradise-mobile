@@ -1,34 +1,34 @@
 import { ButtonGoogleAuth } from "@/components/customs/buttons/ButtonGoogleAuth";
 import { ButtonPrimary } from "@/components/customs/buttons/ButtonPrimary";
+import { ContainerSafeAreaView } from "@/components/customs/containers/ContainerSafeAreaView";
 import { InputPassword } from "@/components/customs/inputs/InputPassword";
-import { InputPhoneNumber } from "@/components/customs/inputs/InputPhoneNumber";
 import { InputPrimary } from "@/components/customs/inputs/InputPrimary";
 import { TextInter } from "@/components/customs/texts/TextInter";
 import { colors } from "@/styles/colors";
 import { globalStyle } from "@/styles/globalStyles";
-import { useHeaderHeight } from "@react-navigation/elements";
+import { Checkbox } from "expo-checkbox";
 import { Link } from "expo-router";
 import { Controller, useForm } from "react-hook-form";
 import {
   Keyboard,
+  Pressable,
   ScrollView,
   StyleSheet,
   TouchableWithoutFeedback,
   View,
 } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
+import { Toast } from "toastify-react-native";
 
 interface Register {
   name: string;
-  username: string;
   email: string;
-  phone?: string;
   password: string;
+  terms: boolean;
 }
 
 export default function RegisterScreen() {
-  const headerHeight = useHeaderHeight();
-
+  const insets = useSafeAreaInsets();
   const {
     control,
     handleSubmit,
@@ -36,32 +36,43 @@ export default function RegisterScreen() {
   } = useForm<Register>();
 
   const onSubmit = (data: Register) => {
+    if (!data.terms) {
+      Toast.error("Terms & Condition harus disetujui sebelum mendaftar");
+      return;
+    }
+
     console.log("data", data);
 
     // router.push("/login");
   };
 
   return (
-    <SafeAreaView style={{ flex: 1 }}>
+    <ContainerSafeAreaView>
       <ScrollView
         contentContainerStyle={styles.sv}
         keyboardShouldPersistTaps="handled"
+        showsHorizontalScrollIndicator={false}
+        showsVerticalScrollIndicator={false}
       >
         <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
           <View
             style={[
               globalStyle.baseContainer,
               {
-                paddingVertical: 0,
+                paddingTop: insets.top + 24,
+                paddingBottom: insets.bottom + 24,
                 width: "100%",
+                gap: 52,
+                alignItems: "center",
+                justifyContent: "center",
               },
             ]}
           >
             <View style={styles.header}>
-              <TextInter style={styles.titlePage}>Register</TextInter>
+              <TextInter style={styles.titlePage}>Create Account</TextInter>
 
               <TextInter style={styles.subtitlePage}>
-                Please register your account
+                Fill your information below or register with your social account
               </TextInter>
             </View>
 
@@ -76,20 +87,7 @@ export default function RegisterScreen() {
                     value={field.value}
                     onValueChange={field.onChange}
                     error={errors.name?.message}
-                  />
-                )}
-              />
-
-              <Controller
-                name="username"
-                control={control}
-                rules={{ required: "Username must be filled" }}
-                render={({ field }) => (
-                  <InputPrimary
-                    label="Username"
-                    value={field.value}
-                    onValueChange={field.onChange}
-                    error={errors.username?.message}
+                    placeholder="Ex. Jonh Doe"
                   />
                 )}
               />
@@ -104,26 +102,7 @@ export default function RegisterScreen() {
                     value={field.value}
                     onValueChange={field.onChange}
                     error={errors.email?.message}
-                  />
-                )}
-              />
-
-              <Controller
-                name="phone"
-                control={control}
-                rules={{
-                  required: "Phone number wajib diisi",
-                  validate: {
-                    startsWith08: (v: any) =>
-                      v?.startsWith("08") || "Format must be 08xxxxx",
-                  },
-                }}
-                render={({ field }) => (
-                  <InputPhoneNumber
-                    label="Phone Number"
-                    value={field.value ?? ""}
-                    onValueChange={field.onChange}
-                    error={errors.phone?.message}
+                    placeholder="example@gmail.com"
                   />
                 )}
               />
@@ -138,7 +117,49 @@ export default function RegisterScreen() {
                     value={field.value}
                     onValueChange={field.onChange}
                     error={errors.password?.message}
+                    placeholder="********"
                   />
+                )}
+              />
+
+              <Controller
+                name="terms"
+                control={control}
+                render={({ field }) => (
+                  <Pressable
+                    style={[
+                      globalStyle.containerRow,
+                      {
+                        marginTop: -8,
+                        marginBottom: 12,
+                        gap: 12,
+                      },
+                    ]}
+                    onPress={() => field.onChange(!field.value)}
+                  >
+                    <Checkbox
+                      style={[globalStyle.inputCheckbox]}
+                      value={field.value}
+                      onValueChange={field.onChange}
+                      color={field.value ? colors.primary : colors.neutral400}
+                    />
+
+                    <TextInter style={{ fontWeight: 600 }}>
+                      Agree with{" "}
+                      <Link
+                        href={"/login"}
+                        style={[
+                          globalStyle.primaryLink,
+                          {
+                            fontWeight: 600,
+                            textDecorationLine: "underline",
+                          },
+                        ]}
+                      >
+                        Terms & Condition
+                      </Link>
+                    </TextInter>
+                  </Pressable>
                 )}
               />
 
@@ -173,16 +194,26 @@ export default function RegisterScreen() {
                 { gap: 6, justifyContent: "center" },
               ]}
             >
-              <TextInter>{"Already have account?"}</TextInter>
+              <TextInter style={{ fontWeight: 600 }}>
+                {"Already have account?"}
+              </TextInter>
 
-              <Link href={"/login"} style={globalStyle.primaryLink}>
+              <Link
+                href={"/login"}
+                style={[
+                  globalStyle.primaryLink,
+                  {
+                    textDecorationLine: "underline",
+                  },
+                ]}
+              >
                 Login
               </Link>
             </View>
           </View>
         </TouchableWithoutFeedback>
       </ScrollView>
-    </SafeAreaView>
+    </ContainerSafeAreaView>
   );
 }
 
@@ -194,12 +225,16 @@ const styles = StyleSheet.create({
   },
   header: {
     width: "100%",
-    gap: 8,
-    alignItems: "flex-start",
+    gap: 12,
+    alignItems: "center",
     flexDirection: "column",
   },
-  titlePage: { fontWeight: 700, fontSize: 32 },
-  subtitlePage: { fontSize: 14, color: colors.secondaryText },
+  titlePage: { fontWeight: 600, fontSize: 32, textAlign: "center" },
+  subtitlePage: {
+    fontSize: 14,
+    color: colors.secondaryText,
+    textAlign: "center",
+  },
   divider: {
     flex: 1,
     height: 1,
