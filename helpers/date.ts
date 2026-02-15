@@ -1,4 +1,3 @@
-import { Post } from "@/components/customs/posts/PostItem";
 import { DateTime } from "luxon";
 
 // Types untuk timezone functions
@@ -43,10 +42,10 @@ export const formatPostTime = ({
 
     if (diffInHours < 1) {
       const diffInMinutes = Math.floor(now.diff(userTime, "minutes").minutes);
-      displayTime = `${diffInMinutes}m ago`;
+      displayTime = `${diffInMinutes}menit lalu`;
     } else {
       const hours = Math.floor(diffInHours);
-      displayTime = `${hours}h ago`;
+      displayTime = `${hours}jam lau`;
     }
   }
   // 2. Jika lebih dari 24 jam dan tahun sama, tampilkan 11 Apr, 25 March
@@ -74,12 +73,18 @@ export const getCurrentTimezone = (): string => {
 /**
  * Format waktu untuk display di UI
  */
-export const getTimeDisplay = (post: Post): TimeDisplay => {
+export const getTimeDisplay = ({
+  createdAt,
+  dateTimezone,
+}: {
+  createdAt: string;
+  dateTimezone: string;
+}): TimeDisplay => {
   const currentTimezone = getCurrentTimezone();
 
   return formatPostTime({
-    createdAt: post.created_at,
-    dataTimezone: post.timezone,
+    createdAt: createdAt,
+    dataTimezone: dateTimezone,
     currentTimezone,
   });
 };
