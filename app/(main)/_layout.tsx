@@ -10,11 +10,11 @@ export default function LayoutMain() {
         },
       }}
     >
+      {/* TABS */}
       <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-      <Stack.Screen name="(screens)" options={{ headerShown: false }} />
 
-      {/* MODALS */}
-      <Stack.Screen name="(modals)" options={{ headerShown: false }} />
+      {/* SCREENS */}
+      <Stack.Screen name="(screens)" options={{ headerShown: false }} />
     </Stack>
   );
 }

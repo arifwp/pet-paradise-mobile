@@ -1,4 +1,4 @@
-import { Community } from "@/app/(main)/(modals)/list-communities";
+import { Community } from "@/app/(main)/(screens)/list-communities";
 import { errMsg } from "@/constants/error";
 import { useMutation } from "@tanstack/react-query";
 import { useRouter } from "expo-router";

@@ -1,4 +1,4 @@
-import { Community } from "@/app/(main)/(modals)/list-communities";
+import { Community } from "@/app/(main)/(screens)/list-communities";
 import { ImageBase } from "@/components/imgs/ImageBase";
 import { TextInter } from "@/components/texts/TextInter";
 import { colors } from "@/styles/colors";

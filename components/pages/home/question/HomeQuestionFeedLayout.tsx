@@ -1,7 +1,7 @@
 import { TextInter } from "@/components/texts/TextInter";
 import { colors } from "@/styles/colors";
 import { StyleSheet, View } from "react-native";
-import { Question, QuestionItem } from "./QuestionItem";
+import { HomeQuestionItem, Question } from "./HomeQuestionItem";
 
 export const HomeQuestionFeedLayout = ({
   questions,
@@ -21,7 +21,7 @@ export const HomeQuestionFeedLayout = ({
       <View style={styles.questionsListContainer}>
         {questions.map((question, idx) => (
           <View key={question.id}>
-            <QuestionItem data={question} />
+            <HomeQuestionItem data={question} />
             {/* Separator antar question */}
             {idx < questions.length - 1 && (
               <View style={styles.questionSeparator} />

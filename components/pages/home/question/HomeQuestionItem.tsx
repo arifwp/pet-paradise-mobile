@@ -24,7 +24,7 @@ export interface Question {
   timezone: string;
 }
 
-export const QuestionItem = ({ data }: { data: Question }) => {
+export const HomeQuestionItem = ({ data }: { data: Question }) => {
   const updateTime = getTimeDisplay({
     createdAt: data.created_at,
     dateTimezone: data.timezone,
@@ -167,7 +167,7 @@ export const QuestionItem = ({ data }: { data: Question }) => {
         </View>
 
         {/* Answer */}
-        <HomeQuestionAnswerButton postId={data.id} />
+        <HomeQuestionAnswerButton postId={data.id} question={data.question} />
       </View>
     </TouchableOpacity>
   );

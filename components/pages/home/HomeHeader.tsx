@@ -69,7 +69,7 @@ export const HomeHeader = () => {
           <Feather name="search" size={20} color={colors.primaryBlack} />
         </Pressable>
 
-        <Link href={"/(main)/(modals)/add-post"}>
+        <Link href={"/(main)/(screens)/add-post"}>
           <AntDesign name="plus-circle" size={20} color={colors.primaryBlack} />
         </Link>
       </View>

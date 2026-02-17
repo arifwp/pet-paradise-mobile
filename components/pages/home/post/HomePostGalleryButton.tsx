@@ -3,7 +3,7 @@ import { Ionicons } from "@expo/vector-icons";
 import * as ImagePicker from "expo-image-picker";
 import { Alert, Pressable } from "react-native";
 
-export const HomeAddPostButtonGallery = () => {
+export const HomePostGalleryButton = () => {
   const { imgs, isLoading, setImgs } = useAddPostStore();
 
   const pickImage = async () => {

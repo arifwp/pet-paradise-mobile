@@ -6,8 +6,10 @@ import { Link } from "expo-router";
 
 export const HomeQuestionAnswerButton = ({
   postId,
+  question,
 }: {
   postId: string | undefined;
+  question: string | undefined;
 }) => {
   return (
     <Link
@@ -17,7 +19,7 @@ export const HomeQuestionAnswerButton = ({
           gap: 4,
         },
       ]}
-      href={`/(main)/(modals)/answer-question?postId=${postId}`}
+      href={`/(main)/(screens)/answer-question?postId=${postId}&question=${question}`}
     >
       <MaterialCommunityIcons
         name="text-box-edit-outline"

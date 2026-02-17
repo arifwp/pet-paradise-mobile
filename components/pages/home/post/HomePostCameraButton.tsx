@@ -3,7 +3,7 @@ import { Ionicons } from "@expo/vector-icons";
 import * as ImagePicker from "expo-image-picker";
 import { Alert, Pressable } from "react-native";
 
-export const HomeAddPostButtonCamera = () => {
+export const HomePostCameraButton = () => {
   const { isLoading, setImgs } = useAddPostStore();
 
   const openCamera = async () => {

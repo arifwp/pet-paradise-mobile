@@ -1,9 +1,9 @@
 import { ImageBase } from "@/components/imgs/ImageBase";
 import { Link } from "expo-router";
 import { Pressable, StyleSheet, View } from "react-native";
-import { Post } from "./PostItem";
+import { Post } from "./HomePostItem";
 
-export const PostItemImage = ({ data }: { data: Post }) => {
+export const HomePostItemImage = ({ data }: { data: Post }) => {
   const imgs = data.medias;
   const imageCount = data.medias.length;
 
@@ -102,7 +102,7 @@ export const PostItemImage = ({ data }: { data: Post }) => {
           <View style={styles.leftColumn}>
             <Link
               href={{
-                pathname: "/(main)/(modals)/image-preview",
+                pathname: "/(main)/(screens)/image-preview",
                 params: {
                   postData: JSON.stringify(data),
                   initialIndex: 0,
@@ -119,7 +119,7 @@ export const PostItemImage = ({ data }: { data: Post }) => {
             </Link>
             <Link
               href={{
-                pathname: "/(main)/(modals)/image-preview",
+                pathname: "/(main)/(screens)/image-preview",
                 params: {
                   postData: JSON.stringify(data),
                   initialIndex: 1,
@@ -138,7 +138,7 @@ export const PostItemImage = ({ data }: { data: Post }) => {
           <View style={styles.rightColumn}>
             <Link
               href={{
-                pathname: "/(main)/(modals)/image-preview",
+                pathname: "/(main)/(screens)/image-preview",
                 params: {
                   postData: JSON.stringify(data),
                   initialIndex: 2,
@@ -161,7 +161,7 @@ export const PostItemImage = ({ data }: { data: Post }) => {
           <View style={styles.leftColumn}>
             <Link
               href={{
-                pathname: "/(main)/(modals)/image-preview",
+                pathname: "/(main)/(screens)/image-preview",
                 params: {
                   postData: JSON.stringify(data),
                   initialIndex: 0,
@@ -178,7 +178,7 @@ export const PostItemImage = ({ data }: { data: Post }) => {
             </Link>
             <Link
               href={{
-                pathname: "/(main)/(modals)/image-preview",
+                pathname: "/(main)/(screens)/image-preview",
                 params: {
                   postData: JSON.stringify(data),
                   initialIndex: 1,
@@ -197,7 +197,7 @@ export const PostItemImage = ({ data }: { data: Post }) => {
           <View style={styles.rightColumn}>
             <Link
               href={{
-                pathname: "/(main)/(modals)/image-preview",
+                pathname: "/(main)/(screens)/image-preview",
                 params: {
                   postData: JSON.stringify(data),
                   initialIndex: 2,
@@ -214,7 +214,7 @@ export const PostItemImage = ({ data }: { data: Post }) => {
             </Link>
             <Link
               href={{
-                pathname: "/(main)/(modals)/image-preview",
+                pathname: "/(main)/(screens)/image-preview",
                 params: {
                   postData: JSON.stringify(data),
                   initialIndex: 3,
@@ -237,7 +237,7 @@ export const PostItemImage = ({ data }: { data: Post }) => {
           <Link
             key={index}
             href={{
-              pathname: "/(main)/(modals)/image-preview",
+              pathname: "/(main)/(screens)/image-preview",
               params: {
                 postData: JSON.stringify(data),
                 initialIndex: index,

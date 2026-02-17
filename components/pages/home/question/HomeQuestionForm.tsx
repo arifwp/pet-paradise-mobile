@@ -1,9 +1,12 @@
 import { ImageBase } from "@/components/imgs/ImageBase";
+import { InputLongText } from "@/components/inputs/InputLongText";
+import { useAddPostStore } from "@/hooks/stores/useAddPostStore";
 import { globalStyle } from "@/styles/globalStyles";
 import { View } from "react-native";
-import { HomeInputQuestion } from "./HomeInputQuestion";
 
-export const AddQuestionForm = () => {
+export const HomeQuestionForm = () => {
+  const { question, setQuestion } = useAddPostStore();
+
   return (
     <View
       style={[
@@ -20,7 +23,11 @@ export const AddQuestionForm = () => {
         style={globalStyle.avatar}
       />
 
-      <HomeInputQuestion />
+      <InputLongText
+        value={question}
+        onValueChange={setQuestion}
+        maxLength={1000}
+      />
     </View>
   );
 };

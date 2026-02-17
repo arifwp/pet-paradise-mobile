@@ -1,8 +1,8 @@
 import { ButtonOutline } from "@/components/buttons/ButtonOutline";
 import { ButtonSolid } from "@/components/buttons/ButtonSolid";
 import { ContainerSafeAreaView } from "@/components/containers/ContainerSafeAreaView";
-import { AddPostForm } from "@/components/pages/home/post/AddPostForm";
-import { AddQuestionForm } from "@/components/pages/home/question/AddQuestionForm";
+import { HomePostForm } from "@/components/pages/home/post/HomePostForm";
+import { HomeQuestionForm } from "@/components/pages/home/question/HomeQuestionForm";
 import {
   PostType,
   useAddPostMutations,
@@ -13,7 +13,7 @@ import { globalStyle } from "@/styles/globalStyles";
 import { AntDesign } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
 import { useEffect } from "react";
-import { Pressable, View } from "react-native";
+import { Pressable, StyleSheet, View } from "react-native";
 import { dummyCommunities } from "./list-communities";
 
 export default function ModalAddPost() {
@@ -79,6 +79,8 @@ export default function ModalAddPost() {
                 const setTo = isPost ? PostType.QUESTION : PostType.POST;
                 setPostType(setTo);
               }}
+              buttonStyle={styles.button}
+              textStyle={styles.buttonText}
               disabled={isLoading}
               isLoading={isLoading}
             />
@@ -93,14 +95,26 @@ export default function ModalAddPost() {
 
                 return addQuestionMutation.mutate();
               }}
+              buttonStyle={styles.button}
+              textStyle={styles.buttonText}
               disabled={isLoading}
               isLoading={isLoading}
             />
           </View>
         </View>
 
-        {isPost ? <AddPostForm /> : <AddQuestionForm />}
+        {isPost ? <HomePostForm /> : <HomeQuestionForm />}
       </View>
     </ContainerSafeAreaView>
   );
 }
+
+const styles = StyleSheet.create({
+  button: {
+    paddingVertical: 8,
+    paddingHorizontal: 12,
+  },
+  buttonText: {
+    fontSize: 12,
+  },
+});

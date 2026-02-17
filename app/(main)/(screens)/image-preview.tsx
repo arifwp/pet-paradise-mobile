@@ -1,10 +1,10 @@
 import { ContainerSafeAreaView } from "@/components/containers/ContainerSafeAreaView";
 import { ImageBase } from "@/components/imgs/ImageBase";
-import { HomeCommentButton } from "@/components/pages/home/post/HomeCommentButton";
-import { HomeLikeButton } from "@/components/pages/home/post/HomeLikeButton";
-import { HomeRepostButton } from "@/components/pages/home/post/HomeRepostButton";
-import { HomeShareButton } from "@/components/pages/home/post/HomeShareButton";
-import { Post } from "@/components/pages/home/post/PostItem";
+import { HomeCommentButton } from "@/components/pages/home/HomeCommentButton";
+import { HomeLikeButton } from "@/components/pages/home/HomeLikeButton";
+import { HomeRepostButton } from "@/components/pages/home/HomeRepostButton";
+import { HomeShareButton } from "@/components/pages/home/HomeShareButton";
+import { Post } from "@/components/pages/home/post/HomePostItem";
 import { colors } from "@/styles/colors";
 import { globalStyle } from "@/styles/globalStyles";
 import { Ionicons } from "@expo/vector-icons";

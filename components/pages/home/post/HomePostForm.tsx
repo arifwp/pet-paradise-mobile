@@ -1,4 +1,5 @@
 import { ImageBase } from "@/components/imgs/ImageBase";
+import { InputLongText } from "@/components/inputs/InputLongText";
 import { TextInter } from "@/components/texts/TextInter";
 import { useAddPostStore } from "@/hooks/stores/useAddPostStore";
 import { colors } from "@/styles/colors";
@@ -7,14 +8,13 @@ import { MaterialIcons } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
 import { useState } from "react";
 import { Pressable, ScrollView, StyleSheet, View } from "react-native";
-import { HomeInputPost } from "../HomeInputPost";
-import { HomeAddPostButtonCamera } from "./HomeAddPostButtonCamera";
-import { HomeAddPostButtonGallery } from "./HomeAddPostButtonGallery";
-import { HomeAddPostTempImage } from "./HomeAddPostTempImage";
+import { HomePostCameraButton } from "./HomePostCameraButton";
+import { HomePostGalleryButton } from "./HomePostGalleryButton";
+import { HomePostTempImg } from "./HomePostTempImg";
 
-export const AddPostForm = () => {
+export const HomePostForm = () => {
   const router = useRouter();
-  const { imgs, shareTo } = useAddPostStore();
+  const { imgs, shareTo, content, setContent } = useAddPostStore();
   const [avatarWidth, setAvatarWidth] = useState<number>(0);
 
   return (
@@ -56,7 +56,7 @@ export const AddPostForm = () => {
             {/* Dropdown Share To Button */}
             <Pressable
               style={[globalStyle.containerRow, styles.containerDropdown]}
-              onPress={() => router.push("/(main)/(modals)/list-communities")}
+              onPress={() => router.push("/(main)/(screens)/list-communities")}
             >
               <TextInter style={{ fontSize: 12, color: colors.primary }}>
                 {shareTo?.name}
@@ -69,7 +69,12 @@ export const AddPostForm = () => {
               />
             </Pressable>
 
-            <HomeInputPost />
+            <InputLongText
+              value={content}
+              onValueChange={setContent}
+              maxLength={1000}
+              placeholder="Tulis postingan kamu..."
+            />
           </View>
         </View>
 
@@ -90,7 +95,7 @@ export const AddPostForm = () => {
               ]}
             >
               {imgs.map((item) => (
-                <HomeAddPostTempImage key={item.id} data={item} />
+                <HomePostTempImg key={item.id} data={item} />
               ))}
             </ScrollView>
           </View>
@@ -99,9 +104,9 @@ export const AddPostForm = () => {
 
       {/* Footer */}
       <View style={styles.containerFooter}>
-        <HomeAddPostButtonGallery />
+        <HomePostGalleryButton />
 
-        <HomeAddPostButtonCamera />
+        <HomePostCameraButton />
       </View>
     </View>
   );

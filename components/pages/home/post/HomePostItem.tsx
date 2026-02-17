@@ -6,11 +6,11 @@ import { colors } from "@/styles/colors";
 import { globalStyle } from "@/styles/globalStyles";
 import { Entypo } from "@expo/vector-icons";
 import { Pressable, StyleSheet, View } from "react-native";
-import { HomeCommentButton } from "./HomeCommentButton";
-import { HomeLikeButton } from "./HomeLikeButton";
-import { HomeRepostButton } from "./HomeRepostButton";
-import { HomeShareButton } from "./HomeShareButton";
-import { PostItemImage } from "./PostItemImage";
+import { HomeCommentButton } from "../HomeCommentButton";
+import { HomeLikeButton } from "../HomeLikeButton";
+import { HomeRepostButton } from "../HomeRepostButton";
+import { HomeShareButton } from "../HomeShareButton";
+import { HomePostItemImage } from "./HomePostItemImage";
 
 export interface Post {
   id: string;
@@ -31,7 +31,7 @@ export interface Post {
   timezone: string;
 }
 
-export const PostItem = ({ data }: { data: Post }) => {
+export const HomePostItem = ({ data }: { data: Post }) => {
   const timeDisplay = getTimeDisplay({
     createdAt: data.created_at,
     dateTimezone: data.timezone,
@@ -148,7 +148,9 @@ export const PostItem = ({ data }: { data: Post }) => {
           {data.content}
         </TextInter>
 
-        {data.medias && data.medias.length > 0 && <PostItemImage data={data} />}
+        {data.medias && data.medias.length > 0 && (
+          <HomePostItemImage data={data} />
+        )}
       </View>
 
       {/* Footer */}

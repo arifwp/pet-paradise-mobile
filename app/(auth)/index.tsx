@@ -36,7 +36,7 @@ export default function LoginScreen() {
   const onSubmit = async (data: Login) => {
     await login(dummyUser, "dummy token", "dummy refresh token");
 
-    router.replace("/(main)/search");
+    router.replace("/(main)/(screens)/search");
   };
 
   return (

@@ -4,7 +4,7 @@ import { colors } from "@/styles/colors";
 import { Ionicons } from "@expo/vector-icons";
 import { Pressable, StyleSheet, View } from "react-native";
 
-export const HomeAddPostTempImage = ({ data }: { data: TempImg }) => {
+export const HomePostTempImg = ({ data }: { data: TempImg }) => {
   const { removeImg } = useAddPostStore();
 
   const deleteImg = () => {

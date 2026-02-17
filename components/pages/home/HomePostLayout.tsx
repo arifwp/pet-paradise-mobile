@@ -1,9 +1,9 @@
 import { createFeedData } from "@/helpers/utils";
 import { colors } from "@/styles/colors";
 import { FlatList, StyleSheet, View } from "react-native";
-import { Post, PostItem } from "./post/PostItem";
+import { HomePostItem, Post } from "./post/HomePostItem";
 import { HomeQuestionFeedLayout } from "./question/HomeQuestionFeedLayout";
-import { Question } from "./question/QuestionItem";
+import { Question } from "./question/HomeQuestionItem";
 
 export const dummyPosts: Post[] = [
   {
@@ -421,7 +421,7 @@ export const HomePostLayout = () => {
 
   const renderItem = ({ item }: { item: FeedItem }) => {
     if (item.type === "post") {
-      return <PostItem data={item.data} />;
+      return <HomePostItem data={item.data} />;
     } else {
       return <HomeQuestionFeedLayout questions={item.data} />;
     }
