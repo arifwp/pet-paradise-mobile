@@ -1,12 +1,14 @@
 import { colors } from "@/styles/colors";
 import { globalStyle } from "@/styles/globalStyles";
-import Ionicons from "@expo/vector-icons/Ionicons";
+import { MaterialIcons } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
 import { Pressable, PressableProps } from "react-native";
 
-interface Props extends PressableProps {}
+interface Props extends PressableProps {
+  icon?: React.ReactNode;
+}
 
-export const ButtonBackNavigation = ({ ...rest }: Props) => {
+export const ButtonBackNavigation = ({ icon, ...rest }: Props) => {
   const router = useRouter();
 
   return (
@@ -18,11 +20,13 @@ export const ButtonBackNavigation = ({ ...rest }: Props) => {
       style={globalStyle.backButton}
       {...rest}
     >
-      <Ionicons
-        name="chevron-back-outline"
-        size={24}
-        color={colors.primaryBlack}
-      />
+      {icon ?? (
+        <MaterialIcons
+          name="keyboard-backspace"
+          size={24}
+          color={colors.primaryBlack}
+        />
+      )}
     </Pressable>
   );
 };

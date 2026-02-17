@@ -2,7 +2,6 @@ import { useAuthStore } from "@/hooks/stores/useAuthStore";
 import { colors } from "@/styles/colors";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { useEffect } from "react";
 import {
   Pressable,
   PressableProps,
@@ -11,14 +10,8 @@ import {
   TextStyle,
   ViewStyle,
 } from "react-native";
-import Animated, {
-  useAnimatedStyle,
-  useSharedValue,
-  withTiming,
-} from "react-native-reanimated";
+import { useSharedValue } from "react-native-reanimated";
 import { TextInter } from "../texts/TextInter";
-
-const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
 
 interface Props extends PressableProps {
   buttonStyle?: StyleProp<ViewStyle>;
@@ -33,12 +26,12 @@ export const ButtonLogout = ({
   ...rest
 }: Props) => {
   const queryClient = useQueryClient();
-  const { signOut } = useAuthStore();
+  const { logout } = useAuthStore();
   const opacity = useSharedValue(1);
 
   const logoutMutation = useMutation({
     mutationFn: async () => {
-      await signOut();
+      await logout();
     },
     onSuccess: () => {},
     onError: () => {},
@@ -47,20 +40,10 @@ export const ButtonLogout = ({
     },
   });
 
-  useEffect(() => {
-    opacity.value = withTiming(logoutMutation.isPending ? 0.5 : 1, {
-      duration: 200,
-    });
-  }, [logoutMutation.isPending]);
-
-  const animatedStyle = useAnimatedStyle(() => ({
-    opacity: opacity.value,
-  }));
-
   return (
-    <AnimatedPressable
+    <Pressable
       onPress={isLoading ? () => {} : () => logoutMutation.mutate()}
-      style={[styles.button, buttonStyle, animatedStyle]}
+      style={[styles.button, buttonStyle]}
       disabled={logoutMutation.isPending}
       {...rest}
     >
@@ -69,7 +52,7 @@ export const ButtonLogout = ({
       <TextInter style={[styles.text, textStyle]}>
         {isLoading ? "Loading..." : "Logout"}
       </TextInter>
-    </AnimatedPressable>
+    </Pressable>
   );
 };
 

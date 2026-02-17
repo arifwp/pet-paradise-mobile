@@ -1,8 +1,7 @@
-import { colors } from "@/styles/colors";
+import { globalStyle } from "@/styles/globalStyles";
 import { useState } from "react";
 import {
   StyleProp,
-  StyleSheet,
   Text,
   TextInput,
   TextInputProps,
@@ -37,14 +36,14 @@ export const InputPrimary = ({
   const [focused, setFocused] = useState<boolean>(false);
 
   return (
-    <View style={[styles.container, containerStyle]}>
-      <TextInter style={[styles.label, labelStyle]}>{label}</TextInter>
+    <View style={[globalStyle.inputContainer, containerStyle]}>
+      <TextInter style={[globalStyle.label, labelStyle]}>{label}</TextInter>
 
       <TextInput
         style={[
-          styles.input,
-          focused && styles["input-focus"],
-          error && styles["input-error"],
+          globalStyle.input,
+          focused && globalStyle.inputFocus,
+          error && globalStyle.inputError,
         ]}
         placeholder={placeholder ? placeholder : undefined}
         onChangeText={onValueChange}
@@ -56,35 +55,7 @@ export const InputPrimary = ({
         {...rest}
       />
 
-      {error && <Text style={styles["text-error"]}>{error}</Text>}
+      {error && <Text style={globalStyle.textError}>{error}</Text>}
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    gap: 8,
-  },
-  label: {
-    fontWeight: 400,
-    fontSize: 14,
-  },
-  input: {
-    height: 40,
-    borderWidth: 1,
-    borderColor: colors.neutral400,
-    borderRadius: 8,
-    padding: 10,
-    textAlignVertical: "top",
-  },
-  "input-focus": {
-    borderColor: colors.primary,
-  },
-  "input-error": {
-    borderColor: "red",
-  },
-  "text-error": {
-    color: "red",
-    fontSize: 12,
-  },
-});

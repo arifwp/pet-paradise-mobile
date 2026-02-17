@@ -1,8 +1,7 @@
-import { colors } from "@/styles/colors";
+import { globalStyle } from "@/styles/globalStyles";
 import { useState } from "react";
 import {
   StyleProp,
-  StyleSheet,
   Text,
   TextInput,
   TextInputProps,
@@ -37,20 +36,25 @@ export const InputPhoneNumber = ({
   const [focused, setFocused] = useState<boolean>(false);
 
   const handleChange = (text: string) => {
-    const cleaned = text.replace(/[^0-9]/g, "");
-    onValueChange(cleaned);
+    const cleaned = text.replace(/[^\d]/g, "");
+    if (cleaned !== value) {
+      onValueChange(cleaned);
+    }
   };
 
   return (
-    <View style={[styles.container, containerStyle]}>
-      <TextInter style={[styles.label, labelStyle]}>{label}</TextInter>
+    <View style={[globalStyle.inputContainer, containerStyle]}>
+      <TextInter style={[globalStyle.label, labelStyle]}>{label}</TextInter>
 
       <TextInput
         style={[
-          styles.input,
-          focused && styles.inputFocus,
-          error && styles.inputError,
+          globalStyle.input,
+          focused && globalStyle.inputFocus,
+          error && globalStyle.inputError,
         ]}
+        maxLength={15}
+        keyboardType="numeric"
+        inputMode="numeric"
         placeholder={"08xxxxxx"}
         onChangeText={handleChange}
         autoCorrect={false}
@@ -61,35 +65,7 @@ export const InputPhoneNumber = ({
         {...rest}
       />
 
-      {error && <Text style={styles.textError}>{error}</Text>}
+      {error && <Text style={globalStyle.textError}>{error}</Text>}
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    gap: 8,
-  },
-  label: {
-    fontWeight: 400,
-    fontSize: 14,
-  },
-  input: {
-    height: 40,
-    borderWidth: 1,
-    borderColor: colors.neutral400,
-    borderRadius: 8,
-    padding: 10,
-    textAlignVertical: "top",
-  },
-  inputFocus: {
-    borderColor: colors.primary,
-  },
-  inputError: {
-    borderColor: "red",
-  },
-  textError: {
-    color: "red",
-    fontSize: 12,
-  },
-});

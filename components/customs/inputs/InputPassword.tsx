@@ -1,10 +1,10 @@
 import { colors } from "@/styles/colors";
+import { globalStyle } from "@/styles/globalStyles";
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import { useState } from "react";
 import {
   StyleProp,
   StyleSheet,
-  Text,
   TextInput,
   TextInputProps,
   TextStyle,
@@ -46,14 +46,14 @@ export const InputPassword = ({
   };
 
   return (
-    <View style={[styles.container, containerStyle]}>
-      <TextInter style={[styles.label, labelStyle]}>{label}</TextInter>
+    <View style={[globalStyle.inputContainer, containerStyle]}>
+      <TextInter style={[globalStyle.label, labelStyle]}>{label}</TextInter>
 
       <View
         style={[
           styles.textInput,
-          focused && styles.inputFocus,
-          error && styles.inputError,
+          focused && globalStyle.inputFocus,
+          error && globalStyle.inputError,
           inputStyle,
         ]}
       >
@@ -83,32 +83,15 @@ export const InputPassword = ({
         </TouchableOpacity>
       </View>
 
-      {error && <Text style={styles.textError}>{error}</Text>}
+      {error && <TextInter style={globalStyle.textError}>{error}</TextInter>}
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    gap: 8,
-  },
-  label: {
-    fontWeight: 400,
-    fontSize: 14,
-  },
   input: {
     flex: 1,
     height: 40,
-  },
-  inputFocus: {
-    borderColor: colors.primary,
-  },
-  inputError: {
-    borderColor: "red",
-  },
-  textError: {
-    color: "red",
-    fontSize: 12,
   },
   textInput: {
     borderWidth: 1,
