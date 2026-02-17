@@ -3,7 +3,7 @@ import { TextInter } from "@/components/texts/TextInter";
 import { colors } from "@/styles/colors";
 import { globalStyle } from "@/styles/globalStyles";
 import { AntDesign, Feather } from "@expo/vector-icons";
-import { useRouter } from "expo-router";
+import { Link, useRouter } from "expo-router";
 import { Pressable, StyleSheet, View } from "react-native";
 
 export const HomeHeader = () => {
@@ -65,20 +65,13 @@ export const HomeHeader = () => {
       </View>
 
       <View style={[globalStyle.containerRow, { gap: 24 }]}>
-        <Pressable onPress={() => router.push("/(main)/search")}>
+        <Pressable onPress={() => router.push("/(main)/(screens)/search")}>
           <Feather name="search" size={20} color={colors.primaryBlack} />
         </Pressable>
 
-        <Pressable
-          onPress={() => {
-            router.push({
-              pathname: "/(main)/(modals)/add-post",
-              params: {},
-            });
-          }}
-        >
+        <Link href={"/(main)/(modals)/add-post"}>
           <AntDesign name="plus-circle" size={20} color={colors.primaryBlack} />
-        </Pressable>
+        </Link>
       </View>
     </View>
   );

@@ -4,15 +4,11 @@ import { Stack } from "expo-router";
 // ModalsLayout
 export default function ModalsLayout() {
   return (
-    <Stack
-      screenOptions={{
-        headerShown: false,
-        animation: "slide_from_bottom", // default semua modal
-      }}
-    >
+    <Stack>
       <Stack.Screen
         name="add-post"
         options={{
+          presentation: "modal",
           headerShown: false,
         }}
       />
@@ -30,7 +26,6 @@ export default function ModalsLayout() {
       <Stack.Screen
         name="image-preview"
         options={{
-          // ❌ Hapus presentation: "modal"
           animation: "slide_from_left",
           headerShown: false,
         }}
@@ -39,8 +34,6 @@ export default function ModalsLayout() {
       <Stack.Screen
         name="answer-question"
         options={{
-          // ❌ Hapus presentation: "modal"
-          // ikut screenOptions slide_from_bottom
           headerShown: false,
         }}
       />

@@ -1,4 +1,4 @@
-import { CompleteProfileActiveForm } from "@/app/(main)/complete-profile";
+import { CompleteProfileActiveForm } from "@/app/(main)/(screens)/complete-profile";
 import { ButtonSolid } from "@/components/buttons/ButtonSolid";
 import { errMsg } from "@/constants/error";
 import { validatePhone } from "@/helpers/number";

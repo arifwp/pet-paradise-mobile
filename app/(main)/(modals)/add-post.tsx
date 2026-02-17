@@ -12,13 +12,21 @@ import { colors } from "@/styles/colors";
 import { globalStyle } from "@/styles/globalStyles";
 import { AntDesign } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
-import { Alert, Pressable, View } from "react-native";
+import { useEffect } from "react";
+import { Pressable, View } from "react-native";
+import { dummyCommunities } from "./list-communities";
 
 export default function ModalAddPost() {
   const router = useRouter();
-  const { postType, isLoading, setPostType } = useAddPostStore();
+  const { postType, isLoading, setShareTo, setPostType } = useAddPostStore();
   const { addPostMutation, addQuestionMutation } = useAddPostMutations();
   const isPost = postType === PostType.POST;
+
+  useEffect(() => {
+    if (postType === PostType.POST) {
+      setShareTo(dummyCommunities[0]);
+    }
+  }, [postType]);
 
   return (
     <ContainerSafeAreaView>
@@ -44,21 +52,21 @@ export default function ModalAddPost() {
           <Pressable
             onPress={() => {
               if (isLoading) return;
-
-              Alert.alert(
-                "Yakin ingin membatalkan?",
-                "Data yang sudah diisi sebelumnya akan hilang.",
-                [
-                  { text: "Tidak", style: "cancel" },
-                  {
-                    text: "Ya, Batalkan",
-                    style: "destructive",
-                    onPress: () => {
-                      router.back();
-                    },
-                  },
-                ],
-              );
+              router.back();
+              // Alert.alert(
+              //   "Yakin ingin membatalkan?",
+              //   "Data yang sudah diisi sebelumnya akan hilang.",
+              //   [
+              //     { text: "Tidak", style: "cancel" },
+              //     {
+              //       text: "Ya, Batalkan",
+              //       style: "destructive",
+              //       onPress: () => {
+              //         router.back();
+              //       },
+              //     },
+              //   ],
+              // );
             }}
           >
             <AntDesign name="close" size={20} color={colors.primaryBlack} />

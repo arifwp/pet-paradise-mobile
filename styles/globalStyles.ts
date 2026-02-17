@@ -75,7 +75,7 @@ export const globalStyle = StyleSheet.create({
   },
   headerModal: {
     width: 60,
-    height: 6,
+    height: 4,
     borderRadius: 24,
     backgroundColor: colors.neutral300,
   },

@@ -1,7 +1,6 @@
 import { HomeCommunityIem } from "@/components/pages/home/HomeCommunityIem";
 import { useAddPostStore } from "@/hooks/stores/useAddPostStore";
 import { useRouter } from "expo-router";
-import { useEffect } from "react";
 import { FlatList, View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
@@ -55,10 +54,6 @@ export default function ListCommunities() {
   const router = useRouter();
   const insets = useSafeAreaInsets();
   const { shareTo, setShareTo } = useAddPostStore();
-
-  useEffect(() => {
-    setShareTo(dummyCommunities[0]);
-  }, []);
 
   return (
     <View style={{ flexDirection: "column" }}>
