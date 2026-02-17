@@ -1,8 +1,8 @@
-import { ButtonOutline } from "@/components/customs/buttons/ButtonOutline";
-import { ButtonSolid } from "@/components/customs/buttons/ButtonSolid";
-import { ContainerSafeAreaView } from "@/components/customs/containers/ContainerSafeAreaView";
-import { AddPostForm } from "@/components/customs/pages/home/post/AddPostForm";
-import { AddQuestionForm } from "@/components/customs/pages/home/question/AddQuestionForm";
+import { ButtonOutline } from "@/components/buttons/ButtonOutline";
+import { ButtonSolid } from "@/components/buttons/ButtonSolid";
+import { ContainerSafeAreaView } from "@/components/containers/ContainerSafeAreaView";
+import { AddPostForm } from "@/components/pages/home/post/AddPostForm";
+import { AddQuestionForm } from "@/components/pages/home/question/AddQuestionForm";
 import {
   PostType,
   useAddPostMutations,

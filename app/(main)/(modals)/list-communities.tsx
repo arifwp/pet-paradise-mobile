@@ -1,4 +1,4 @@
-import { HomeCommunityIem } from "@/components/customs/pages/home/HomeCommunityIem";
+import { HomeCommunityIem } from "@/components/pages/home/HomeCommunityIem";
 import { useAddPostStore } from "@/hooks/stores/useAddPostStore";
 import { useRouter } from "expo-router";
 import { useEffect } from "react";

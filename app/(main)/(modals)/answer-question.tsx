@@ -1,6 +1,6 @@
-import { ButtonBackNavigation } from "@/components/customs/buttons/ButtonBackNavigation";
-import { ButtonSolid } from "@/components/customs/buttons/ButtonSolid";
-import { ContainerSafeAreaView } from "@/components/customs/containers/ContainerSafeAreaView";
+import { ButtonBackNavigation } from "@/components/buttons/ButtonBackNavigation";
+import { ButtonSolid } from "@/components/buttons/ButtonSolid";
+import { ContainerSafeAreaView } from "@/components/containers/ContainerSafeAreaView";
 import { colors } from "@/styles/colors";
 import { globalStyle } from "@/styles/globalStyles";
 import { MaterialCommunityIcons } from "@expo/vector-icons";

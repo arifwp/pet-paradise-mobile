@@ -5,7 +5,7 @@ export default function LayoutTabs() {
   return (
     <NativeTabs disableTransparentOnScrollEdge backgroundColor={colors.white}>
       <NativeTabs.Trigger
-        name="index"
+        name="home/index"
         options={{
           indicatorColor: colors.primary,
         }}
@@ -23,7 +23,7 @@ export default function LayoutTabs() {
         </Label>
       </NativeTabs.Trigger>
 
-      <NativeTabs.Trigger name="question">
+      <NativeTabs.Trigger name="community/index">
         <Icon
           sf={{
             default: "rectangle.3.group.bubble",
@@ -40,7 +40,7 @@ export default function LayoutTabs() {
         </Label>
       </NativeTabs.Trigger>
 
-      <NativeTabs.Trigger name="adopt">
+      <NativeTabs.Trigger name="adopt/index">
         <Icon
           sf={{
             default: "rectangle.grid.2x2",

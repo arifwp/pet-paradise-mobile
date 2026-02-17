@@ -8,7 +8,6 @@ import ToastManager from "toastify-react-native";
 // SplashScreen.preventAutoHideAsync();
 
 export default function LayoutRoot() {
-  // Set up the auth context and render your layout inside of it.
   const queryClient = new QueryClient();
   const { isLoading } = useAuthStore();
 
@@ -45,50 +44,4 @@ function RootNavigator() {
       </Stack.Protected>
     </Stack>
   );
-
-  // return (
-  //   <Stack
-  //     screenOptions={{
-  //       contentStyle: {
-  //         backgroundColor: colors.white,
-  //       },
-  //     }}
-  //   >
-  //     <Stack.Protected guard={isAuthenticated}>
-  //       <Stack.Screen
-  //         name="(app)"
-  //         options={{
-  //           headerShown: false,
-  //         }}
-  //       />
-  //     </Stack.Protected>
-
-  //     <Stack.Protected guard={!isAuthenticated}>
-  //       <Stack.Screen
-  //         name="login"
-  //         options={{
-  //           headerShown: false,
-  //         }}
-  //       />
-
-  //       <Stack.Screen
-  //         name="index"
-  //         options={{
-  //           headerShown: false,
-  //         }}
-  //       />
-
-  //       <Stack.Screen
-  //         name="forgot-password"
-  //         options={{
-  //           headerShown: true,
-  //           headerTitleStyle: { color: colors.white },
-  //           headerBackButtonDisplayMode: "minimal",
-  //           headerShadowVisible: false,
-  //           headerLeft: () => <ButtonBackNavigation />,
-  //         }}
-  //       />
-  //     </Stack.Protected>
-  //   </Stack>
-  // );
 }

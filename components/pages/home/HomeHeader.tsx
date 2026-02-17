@@ -1,10 +1,10 @@
+import { ImageBase } from "@/components/imgs/ImageBase";
+import { TextInter } from "@/components/texts/TextInter";
 import { colors } from "@/styles/colors";
 import { globalStyle } from "@/styles/globalStyles";
 import { AntDesign, Feather } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
 import { Pressable, StyleSheet, View } from "react-native";
-import { ImageBase } from "../../imgs/ImageBase";
-import { TextInter } from "../../texts/TextInter";
 
 export const HomeHeader = () => {
   const router = useRouter();

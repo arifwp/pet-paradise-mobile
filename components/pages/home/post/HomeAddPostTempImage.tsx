@@ -1,4 +1,4 @@
-import { ImageBase } from "@/components/customs/imgs/ImageBase";
+import { ImageBase } from "@/components/imgs/ImageBase";
 import { TempImg, useAddPostStore } from "@/hooks/stores/useAddPostStore";
 import { colors } from "@/styles/colors";
 import { Ionicons } from "@expo/vector-icons";

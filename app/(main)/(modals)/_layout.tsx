@@ -1,4 +1,4 @@
-import { HeaderModal } from "@/components/customs/HeaderModal";
+import { HeaderModal } from "@/components/HeaderModal";
 import { Stack } from "expo-router";
 
 // ModalsLayout

@@ -1,10 +1,10 @@
-import { ContainerSafeAreaView } from "@/components/customs/containers/ContainerSafeAreaView";
-import { ImageBase } from "@/components/customs/imgs/ImageBase";
-import { HomeCommentButton } from "@/components/customs/pages/home/post/HomeCommentButton";
-import { HomeLikeButton } from "@/components/customs/pages/home/post/HomeLikeButton";
-import { HomeRepostButton } from "@/components/customs/pages/home/post/HomeRepostButton";
-import { HomeShareButton } from "@/components/customs/pages/home/post/HomeShareButton";
-import { Post } from "@/components/customs/pages/home/post/PostItem";
+import { ContainerSafeAreaView } from "@/components/containers/ContainerSafeAreaView";
+import { ImageBase } from "@/components/imgs/ImageBase";
+import { HomeCommentButton } from "@/components/pages/home/post/HomeCommentButton";
+import { HomeLikeButton } from "@/components/pages/home/post/HomeLikeButton";
+import { HomeRepostButton } from "@/components/pages/home/post/HomeRepostButton";
+import { HomeShareButton } from "@/components/pages/home/post/HomeShareButton";
+import { Post } from "@/components/pages/home/post/PostItem";
 import { colors } from "@/styles/colors";
 import { globalStyle } from "@/styles/globalStyles";
 import { Ionicons } from "@expo/vector-icons";
@@ -240,7 +240,6 @@ export default function ModalImagePreview() {
                 iconColor={colors.white}
                 iconSize={18}
                 containerStyle={{ gap: 6 }}
-                textStyle={{ color: colors.white }}
               />
             </View>
           </View>

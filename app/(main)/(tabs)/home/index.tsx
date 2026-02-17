@@ -1,6 +1,6 @@
-import { ContainerSafeAreaView } from "@/components/customs/containers/ContainerSafeAreaView";
-import { HomeHeader } from "@/components/customs/pages/home/HomeHeader";
-import { HomePostLayout } from "@/components/customs/pages/home/HomePostLayout";
+import { ContainerSafeAreaView } from "@/components/containers/ContainerSafeAreaView";
+import { HomeHeader } from "@/components/pages/home/HomeHeader";
+import { HomePostLayout } from "@/components/pages/home/HomePostLayout";
 import { globalStyle } from "@/styles/globalStyles";
 import { View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";

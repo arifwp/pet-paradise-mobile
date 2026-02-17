@@ -1,6 +1,6 @@
-import { FeedItem } from "@/components/customs/pages/home/HomePostLayout";
-import { Post } from "@/components/customs/pages/home/post/PostItem";
-import { Question } from "@/components/customs/pages/home/question/QuestionItem";
+import { FeedItem } from "@/components/pages/home/HomePostLayout";
+import { Post } from "@/components/pages/home/post/PostItem";
+import { Question } from "@/components/pages/home/question/QuestionItem";
 import { getRandomNumber } from "./number";
 
 export const createFeedData = (

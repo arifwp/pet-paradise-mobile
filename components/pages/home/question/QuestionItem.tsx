@@ -1,10 +1,10 @@
-import { DotSeparator } from "@/components/customs/DotSeparator";
+import { DotSeparator } from "@/components/DotSeparator";
+import { TextInter } from "@/components/texts/TextInter";
 import { getTimeDisplay } from "@/helpers/date";
 import { colors } from "@/styles/colors";
 import { globalStyle } from "@/styles/globalStyles";
 import { Entypo, MaterialCommunityIcons } from "@expo/vector-icons";
 import { Pressable, StyleSheet, TouchableOpacity, View } from "react-native";
-import { TextInter } from "../../../texts/TextInter";
 import { HomeQuestionAnswerButton } from "./HomeQuestionAnswerButton";
 
 export interface Question {

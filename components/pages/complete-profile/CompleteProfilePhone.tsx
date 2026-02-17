@@ -1,4 +1,5 @@
 import { CompleteProfileActiveForm } from "@/app/(main)/complete-profile";
+import { ButtonSolid } from "@/components/buttons/ButtonSolid";
 import { errMsg } from "@/constants/error";
 import { validatePhone } from "@/helpers/number";
 import { useMutation } from "@tanstack/react-query";
@@ -7,7 +8,6 @@ import { Dispatch, SetStateAction } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { StyleSheet, View } from "react-native";
 import { Toast } from "toastify-react-native";
-import { ButtonPrimary } from "../../buttons/ButtonSolid";
 import { InputPhoneNumber } from "../../inputs/InputPhoneNumber";
 
 interface Props {
@@ -83,7 +83,7 @@ export const CompleteProfilePhone = ({ setActiveForm }: Props) => {
         )}
       />
 
-      <ButtonPrimary
+      <ButtonSolid
         onPress={() => {
           clearErrors();
           handleSubmit(onSubmitPhone)();

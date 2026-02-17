@@ -10,7 +10,6 @@ import {
   TextStyle,
   ViewStyle,
 } from "react-native";
-import { useSharedValue } from "react-native-reanimated";
 import { TextInter } from "../texts/TextInter";
 
 interface Props extends PressableProps {
@@ -27,7 +26,6 @@ export const ButtonLogout = ({
 }: Props) => {
   const queryClient = useQueryClient();
   const { logout } = useAuthStore();
-  const opacity = useSharedValue(1);
 
   const logoutMutation = useMutation({
     mutationFn: async () => {

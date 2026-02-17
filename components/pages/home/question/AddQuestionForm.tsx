@@ -1,4 +1,4 @@
-import { ImageBase } from "@/components/customs/imgs/ImageBase";
+import { ImageBase } from "@/components/imgs/ImageBase";
 import { globalStyle } from "@/styles/globalStyles";
 import { View } from "react-native";
 import { HomeInputQuestion } from "./HomeInputQuestion";

@@ -1,11 +1,11 @@
+import { ButtonOutline } from "@/components/buttons/ButtonOutline";
+import { ImageBase } from "@/components/imgs/ImageBase";
+import { TextInter } from "@/components/texts/TextInter";
 import { getTimeDisplay } from "@/helpers/date";
 import { colors } from "@/styles/colors";
 import { globalStyle } from "@/styles/globalStyles";
 import { Entypo } from "@expo/vector-icons";
 import { Pressable, StyleSheet, View } from "react-native";
-import { ButtonOutline } from "../../../buttons/ButtonOutline";
-import { ImageBase } from "../../../imgs/ImageBase";
-import { TextInter } from "../../../texts/TextInter";
 import { HomeCommentButton } from "./HomeCommentButton";
 import { HomeLikeButton } from "./HomeLikeButton";
 import { HomeRepostButton } from "./HomeRepostButton";

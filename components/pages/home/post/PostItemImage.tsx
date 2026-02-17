@@ -1,4 +1,4 @@
-import { ImageBase } from "@/components/customs/imgs/ImageBase";
+import { ImageBase } from "@/components/imgs/ImageBase";
 import { Link } from "expo-router";
 import { Pressable, StyleSheet, View } from "react-native";
 import { Post } from "./PostItem";

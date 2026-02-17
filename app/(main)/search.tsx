@@ -1,13 +1,11 @@
-import { ButtonBackNavigation } from "@/components/customs/buttons/ButtonBackNavigation";
-import { InputSearch } from "@/components/customs/inputs/InputSearch";
+import { ButtonBackNavigation } from "@/components/buttons/ButtonBackNavigation";
+import { ContainerSafeAreaView } from "@/components/containers/ContainerSafeAreaView";
+import { InputSearch } from "@/components/inputs/InputSearch";
 import { useDebounce } from "@/hooks/useDebounce";
 import { globalStyle } from "@/styles/globalStyles";
 import { useState } from "react";
 import { StyleSheet, View } from "react-native";
-import {
-  SafeAreaView,
-  useSafeAreaInsets,
-} from "react-native-safe-area-context";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 export default function SearchScreen() {
   const insets = useSafeAreaInsets();
@@ -15,7 +13,7 @@ export default function SearchScreen() {
   const debouncedSearch = useDebounce(search);
 
   return (
-    <SafeAreaView style={{ flex: 1 }}>
+    <ContainerSafeAreaView>
       <View
         style={[
           globalStyle.baseContainer,
@@ -45,7 +43,7 @@ export default function SearchScreen() {
           />
         </View>
       </View>
-    </SafeAreaView>
+    </ContainerSafeAreaView>
   );
 }
 

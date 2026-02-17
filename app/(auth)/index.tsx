@@ -1,9 +1,9 @@
-import { ButtonGoogleAuth } from "@/components/customs/buttons/ButtonGoogleAuth";
-import { ButtonPrimary } from "@/components/customs/buttons/ButtonSolid";
-import { ContainerSafeAreaView } from "@/components/customs/containers/ContainerSafeAreaView";
-import { InputPassword } from "@/components/customs/inputs/InputPassword";
-import { InputPrimary } from "@/components/customs/inputs/InputPrimary";
-import { TextInter } from "@/components/customs/texts/TextInter";
+import { ButtonGoogleAuth } from "@/components/buttons/ButtonGoogleAuth";
+import { ButtonSolid } from "@/components/buttons/ButtonSolid";
+import { ContainerSafeAreaView } from "@/components/containers/ContainerSafeAreaView";
+import { InputPassword } from "@/components/inputs/InputPassword";
+import { InputPrimary } from "@/components/inputs/InputPrimary";
+import { TextInter } from "@/components/texts/TextInter";
 import { dummyUser, useAuthStore } from "@/hooks/stores/useAuthStore";
 import { colors } from "@/styles/colors";
 import { globalStyle } from "@/styles/globalStyles";
@@ -16,7 +16,6 @@ import {
   TouchableWithoutFeedback,
   View,
 } from "react-native";
-import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 interface Login {
   email: string;
@@ -25,7 +24,6 @@ interface Login {
 
 export default function LoginScreen() {
   const router = useRouter();
-  const insets = useSafeAreaInsets();
 
   const { login, setLoading, setError } = useAuthStore();
 
@@ -44,7 +42,6 @@ export default function LoginScreen() {
   return (
     <ContainerSafeAreaView>
       <ScrollView
-        contentContainerStyle={styles.sv}
         keyboardShouldPersistTaps="handled"
         showsHorizontalScrollIndicator={false}
         showsVerticalScrollIndicator={false}
@@ -54,16 +51,12 @@ export default function LoginScreen() {
             style={[
               globalStyle.baseContainer,
               {
-                paddingTop: insets.top + 24,
-                paddingBottom: insets.bottom + 24,
                 width: "100%",
                 gap: 52,
-                alignItems: "center",
-                justifyContent: "center",
               },
             ]}
           >
-            <View style={styles.header}>
+            <View style={[globalStyle.containerColumn, { gap: 12 }]}>
               <TextInter style={styles.titlePage}>Sign In</TextInter>
 
               <TextInter style={styles.subtitlePage}>
@@ -115,7 +108,7 @@ export default function LoginScreen() {
                 Forgot Password?
               </Link>
 
-              <ButtonPrimary title="Log In" onPress={handleSubmit(onSubmit)} />
+              <ButtonSolid title="Log In" onPress={handleSubmit(onSubmit)} />
 
               <View
                 style={{
@@ -148,7 +141,7 @@ export default function LoginScreen() {
               </TextInter>
 
               <Link
-                href={"/(main)/search"}
+                href={"/(auth)/register"}
                 style={[
                   globalStyle.primaryLink,
                   {
@@ -167,17 +160,6 @@ export default function LoginScreen() {
 }
 
 const styles = StyleSheet.create({
-  sv: {
-    flexGrow: 1,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  header: {
-    width: "100%",
-    gap: 12,
-    alignItems: "center",
-    flexDirection: "column",
-  },
   titlePage: { fontWeight: 600, fontSize: 32, textAlign: "center" },
   subtitlePage: {
     fontSize: 14,

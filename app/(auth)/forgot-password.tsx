@@ -1,6 +1,6 @@
-import { ButtonPrimary } from "@/components/customs/buttons/ButtonSolid";
-import { InputPrimary } from "@/components/customs/inputs/InputPrimary";
-import { TextInter } from "@/components/customs/texts/TextInter";
+import { ButtonSolid } from "@/components/buttons/ButtonSolid";
+import { InputPrimary } from "@/components/inputs/InputPrimary";
+import { TextInter } from "@/components/texts/TextInter";
 import { colors } from "@/styles/colors";
 import { globalStyle } from "@/styles/globalStyles";
 import { Controller, useForm } from "react-hook-form";
@@ -69,7 +69,7 @@ export default function ForgotPasswordScreen() {
           </View>
         </View>
 
-        <ButtonPrimary
+        <ButtonSolid
           title="Send me email"
           onPress={handleSubmit(onSubmit)}
           buttonStyle={{ width: "100%", marginBottom: 24 }}

@@ -1,6 +1,6 @@
-import { CompleteProfileOtp } from "@/components/customs/pages/complete-profile/CompleteProfileOtp";
-import { CompleteProfilePhone } from "@/components/customs/pages/complete-profile/CompleteProfilePhone";
-import { TextInter } from "@/components/customs/texts/TextInter";
+import { CompleteProfileOtp } from "@/components/pages/complete-profile/CompleteProfileOtp";
+import { CompleteProfilePhone } from "@/components/pages/complete-profile/CompleteProfilePhone";
+import { TextInter } from "@/components/texts/TextInter";
 import { colors } from "@/styles/colors";
 import { globalStyle } from "@/styles/globalStyles";
 import { useState } from "react";

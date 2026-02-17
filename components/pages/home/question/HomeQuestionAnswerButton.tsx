@@ -1,4 +1,4 @@
-import { TextInter } from "@/components/customs/texts/TextInter";
+import { TextInter } from "@/components/texts/TextInter";
 import { colors } from "@/styles/colors";
 import { globalStyle } from "@/styles/globalStyles";
 import { MaterialCommunityIcons } from "@expo/vector-icons";

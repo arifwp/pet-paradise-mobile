@@ -1,9 +1,5 @@
-import { ImageBase } from "@/components/customs/imgs/ImageBase";
-import { HomeInputPost } from "@/components/customs/pages/home/HomeInputPost";
-import { HomeAddPostButtonCamera } from "@/components/customs/pages/home/post/HomeAddPostButtonCamera";
-import { HomeAddPostButtonGallery } from "@/components/customs/pages/home/post/HomeAddPostButtonGallery";
-import { HomeAddPostTempImage } from "@/components/customs/pages/home/post/HomeAddPostTempImage";
-import { TextInter } from "@/components/customs/texts/TextInter";
+import { ImageBase } from "@/components/imgs/ImageBase";
+import { TextInter } from "@/components/texts/TextInter";
 import { useAddPostStore } from "@/hooks/stores/useAddPostStore";
 import { colors } from "@/styles/colors";
 import { globalStyle } from "@/styles/globalStyles";
@@ -11,6 +7,10 @@ import { MaterialIcons } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
 import { useState } from "react";
 import { Pressable, ScrollView, StyleSheet, View } from "react-native";
+import { HomeInputPost } from "../HomeInputPost";
+import { HomeAddPostButtonCamera } from "./HomeAddPostButtonCamera";
+import { HomeAddPostButtonGallery } from "./HomeAddPostButtonGallery";
+import { HomeAddPostTempImage } from "./HomeAddPostTempImage";
 
 export const AddPostForm = () => {
   const router = useRouter();

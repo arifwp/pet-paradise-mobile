@@ -1,10 +1,10 @@
 import { Community } from "@/app/(main)/(modals)/list-communities";
+import { ImageBase } from "@/components/imgs/ImageBase";
+import { TextInter } from "@/components/texts/TextInter";
 import { colors } from "@/styles/colors";
 import { globalStyle } from "@/styles/globalStyles";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { Pressable, PressableProps, View } from "react-native";
-import { ImageBase } from "../../imgs/ImageBase";
-import { TextInter } from "../../texts/TextInter";
 
 interface Props extends PressableProps {
   isSelected: boolean;

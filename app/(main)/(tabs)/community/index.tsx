@@ -1,4 +1,4 @@
-import { ContainerSafeAreaView } from "@/components/customs/containers/ContainerSafeAreaView";
+import { ContainerSafeAreaView } from "@/components/containers/ContainerSafeAreaView";
 import { globalStyle } from "@/styles/globalStyles";
 import { ScrollView, Text, View } from "react-native";
 

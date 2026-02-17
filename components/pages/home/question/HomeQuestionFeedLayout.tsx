@@ -1,4 +1,4 @@
-import { TextInter } from "@/components/customs/texts/TextInter";
+import { TextInter } from "@/components/texts/TextInter";
 import { colors } from "@/styles/colors";
 import { StyleSheet, View } from "react-native";
 import { Question, QuestionItem } from "./QuestionItem";

@@ -1,4 +1,4 @@
-import { TextInter } from "@/components/customs/texts/TextInter";
+import { TextInter } from "@/components/texts/TextInter";
 import { errMsg } from "@/constants/error";
 import { colors } from "@/styles/colors";
 import { globalStyle } from "@/styles/globalStyles";
